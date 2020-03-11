@@ -1,4 +1,5 @@
-__coder__ = "XenonXA"
+__coder__ = "KhodeXenon"
+__my_email__ = "KhodeXenon@gmail.com"
 from modules import BinaryOctet, DecimalConversion
 checked_ip = ""
 checked_subnet = ""
@@ -7,6 +8,7 @@ checked_ip_class = ""
 checked_net_id = ""
 checked_total_host = ""
 checked_broadcast = ""
+checked_ip_type = ""
 
 def IpCalc():
     '''calculate ip address information'''
@@ -58,8 +60,6 @@ def IpCalc():
             else:
                 print("Invalid subnet mask !")
                 continue
-
-
 
             # set a dictionary for subnet calculations and prefix
             equal_zero_subnet = {"255": 0, "254": 1, "252": 2, "248": 3, "240": 4, "224": 5, "192": 6, "128": 7, "0": 8}
@@ -198,6 +198,25 @@ def IpCalc():
 
             checked_broadcast = ".".join(broadcast_decimal_list)
 
+            # checking the type of IP address (public or private)
+            if int_ip_address_octets[0] == 10 :
+                ip_type = "Private"
+                checked_ip_type = ip_type
+            elif int_ip_address_octets[0] == 192 and \
+                    int_ip_address_octets[1] == 168 :
+                ip_type = "Private"
+                checked_ip_type = ip_type
+            elif int_ip_address_octets[0] == 169 and \
+                    int_ip_address_octets[1] == 254 :
+                ip_type = "Private"
+                checked_ip_type = ip_type
+            elif int_ip_address_octets[0] == 172 and \
+                    16 <= int_ip_address_octets[1] <= 31 :
+                ip_type = "Private"
+                checked_ip_type = ip_type
+            else :
+                ip_type = "Public"
+                checked_ip_type = ip_type
 
         # error handling
         except ValueError :
@@ -243,6 +262,10 @@ def IpCalc():
 
                 print("")
 
+                print("IP Type : " + checked_ip_type)
+
+                print("")
+
                 print("Prefix length : ", checked_prefix)
 
                 print("")
@@ -260,6 +283,14 @@ def IpCalc():
                 print("")
 
                 print("Broadcast : " , checked_broadcast)
+
+                print("-------------------------")
+
+                again_or_not = input("again ? (y) :").lower()
+                if again_or_not == "y" or again_or_not == "yes":
+                    ip_checking = True
+                else:
+                    ip_checking = False
 
                 print("")
             except TypeError :
