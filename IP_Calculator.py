@@ -1,5 +1,6 @@
 __coder__ = "KhodeXenon"
 __my_email__ = "KhodeXenon@gmail.com"
+
 from modules import BinaryOctet, DecimalConversion
 checked_ip = ""
 checked_subnet = ""
