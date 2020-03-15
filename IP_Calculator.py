@@ -26,7 +26,7 @@ def IpCalc():
 
         try :
             ip_address = input("IP address :")
-            subnet_mask = input("Subnet mask :")
+            subnet_mask = input("Subnet mask :").strip()
             ip_address_octets = ip_address.split(".")
             int_ip_address_octets = [int(x) for x in ip_address_octets]
             # seting default subnet masks
