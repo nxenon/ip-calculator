@@ -1,4 +1,4 @@
-## An Simple IP calculator
+## Simple IP Calculator
 
 Calculates :
 - [x] Prefix Length
