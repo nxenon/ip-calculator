@@ -1,5 +1,8 @@
-__coder__ = "KhodeXenon"
-__my_email__ = "KhodeXenon@gmail.com"
+#!/usr/bin/env python3
+
+'''
+Simple IP-Calculator
+'''
 
 from packages.modules import BinaryOctet, DecimalConversion
 
